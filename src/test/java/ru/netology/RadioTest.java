@@ -120,9 +120,9 @@ public class RadioTest {
     @Test
     public void RadioNextTwo() {
         Radio radio = new Radio();
-        radio.setCurrentStation(9);
+        radio.setCurrentStation(0);
         radio.next();
-        int expected = 0;
+        int expected = 1;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -225,7 +225,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(2);
 
-        int expected = 2;
+        int expected = 0;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
@@ -258,7 +258,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(99);
 
-        int expected = 99;
+        int expected = 0;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
@@ -275,5 +275,134 @@ public class RadioTest {
 
     }
 
+    @Test
+    public void NegativeRadioStation() {
+        Radio radio = new Radio(10);
+
+        radio.setCurrentStation(5);
+
+        int expected = 5;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void BoundaryRadioStation() {
+        Radio radio = new Radio(10);
+
+        radio.setCurrentStation(9);
+
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+
+    }
+    @Test
+    public void NegativeBoundaryRadioStation() {
+        Radio radio = new Radio(10);
+
+        radio.setCurrentStation(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void BoundaryRadio() {
+        Radio radio = new Radio(10);
+
+        radio.setCurrentStation(15);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+
+    @Test
+    public void StationPerv1() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(1);
+
+        int expected = 1;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void RadioPerv1() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(-9);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+
+    @Test
+    public void Volume100() {
+        Radio radio = new Radio(100);
+
+        radio.setCurrentVolume(0);
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void VolumeNegative() {
+        Radio radio = new Radio(100);
+
+        radio.setCurrentVolume(101);
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void VolumeBoundary() {
+        Radio radio = new Radio(100);
+
+        radio.setCurrentVolume(96);
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void VolumeRadioBoundary() {
+        Radio radio = new Radio(100);
+
+        radio.setCurrentVolume(-99);
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void BoundaryVolumeRadio() {
+        Radio radio = new Radio(100);
+
+        radio.setCurrentVolume(-101);
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+
 
 }
+
+
+
+
