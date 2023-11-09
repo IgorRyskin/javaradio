@@ -8,7 +8,7 @@ public class Radio {
 
 
     public Radio() {
-        this.maxStation = 20;
+        this.maxStation = 9;
     }
 
     public Radio(int stationsCount) {
@@ -21,14 +21,14 @@ public class Radio {
             currentStation++;
             return;
         }
-        currentStation = 20;
+        currentStation = 9;
     }
 
     public void perv() {
         if (currentStation != 0) {
             currentStation--;
         } else {
-            currentStation = 20;
+            currentStation = 9;
         }
     }
 
@@ -43,7 +43,7 @@ public class Radio {
             return;
         }
 
-        if (currentStation > 20) {
+        if (currentStation > 9) {
             return;
         }
         this.currentStation = currentStation;
